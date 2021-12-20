@@ -11,7 +11,7 @@ const App = function () {
   store.dispatch(actions.add(40));
   store.dispatch(actions.clear());
   return (
-    <h1>Hello</h1>
+    <h1>Redux Basics</h1>
   );
 };
 

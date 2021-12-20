@@ -5,7 +5,7 @@ const ADD = 'add';
 const TAKE = 'take';
 const CLEAR = 'clear';
 
-// action creater
+// actions creater
 export const actions = {
   add: (value) => ({ type: ADD, value }),
   take: (value) => ({ type: TAKE, value }),
