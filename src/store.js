@@ -1,17 +1,22 @@
-export function createStore(reducer, initialState) {
-  let state = initialState;
-  const callbacks = [];
+import { createStore } from './redux';
 
-  return {
-    getState() {
-      return state;
-    },
-    dispatch(action) {
-      state = reducer(state, action);
-      callbacks.forEach((f) => f());
-    },
-    subscribe(f) {
-      callbacks.push(f);
-    },
-  };
-}
+// reducer-function
+const amountReducer = (amount, action) => {
+  switch (action.type) {
+    case 'add':
+      return amount + action.value;
+
+    case 'take':
+      return amount - action.value;
+
+    case 'clear':
+      return 0;
+
+    default:
+      return amount;
+  }
+};
+
+const store = createStore(amountReducer, 100);
+
+export default store;
