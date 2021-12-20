@@ -2,9 +2,7 @@ import React from 'react';
 
 // eslint-disable-next-line func-names
 const App = function () {
-  let moneyLeft = 100;
-  console.log(moneyLeft);
-
+  // reducer-function
   const amountReducer = (amount, action) => {
     switch (action.type) {
       case 'add':
@@ -21,22 +19,33 @@ const App = function () {
     }
   };
 
-  const action1 = { type: 'add', value: 20 };
-  moneyLeft = amountReducer(moneyLeft, action1);
-  console.log(moneyLeft);
+  function createStore(reducer, initialState) {
+    let state = initialState;
+    const callbacks = [];
 
-  const action2 = { type: 'take', value: 50 };
-  moneyLeft = amountReducer(moneyLeft, action2);
-  console.log(moneyLeft);
+    return {
+      getState() {
+        return state;
+      },
+      dispatch(action) {
+        state = reducer(state, action);
+        callbacks.forEach((f) => f());
+      },
+      subscribe(f) {
+        callbacks.push(f);
+      },
+    };
+  }
 
-  const action3 = { type: 'add', value: 40 };
-  moneyLeft = amountReducer(moneyLeft, action3);
-  console.log(moneyLeft);
+  const store1 = createStore(amountReducer, 100);
 
-  const action4 = { type: 'clear' };
-  moneyLeft = amountReducer(moneyLeft, action4);
-  console.log(moneyLeft);
+  store1.subscribe(() => console.log(store1.getState()));
 
+  // actions
+  store1.dispatch({ type: 'add', value: 20 });
+  store1.dispatch({ type: 'take', value: 50 });
+  store1.dispatch({ type: 'add', value: 40 });
+  store1.dispatch({ type: 'clear' });
   return (
     <h1>Hello</h1>
   );
