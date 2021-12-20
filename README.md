@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# How to see result of code executing
+
+Open console in dev tools
+
 ## Available Scripts
 
 In the project directory, you can run:
