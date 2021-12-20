@@ -1,15 +1,20 @@
 import { createStore } from './redux';
 
+// Action types
+export const ADD = 'add';
+export const TAKE = 'take';
+export const CLEAR = 'clear';
+
 // reducer-function
 const amountReducer = (amount, action) => {
   switch (action.type) {
-    case 'add':
+    case ADD:
       return amount + action.value;
 
-    case 'take':
+    case TAKE:
       return amount - action.value;
 
-    case 'clear':
+    case CLEAR:
       return 0;
 
     default:
