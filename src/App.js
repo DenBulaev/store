@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStore } from './store';
 
 // eslint-disable-next-line func-names
 const App = function () {
@@ -18,24 +19,6 @@ const App = function () {
         return amount;
     }
   };
-
-  function createStore(reducer, initialState) {
-    let state = initialState;
-    const callbacks = [];
-
-    return {
-      getState() {
-        return state;
-      },
-      dispatch(action) {
-        state = reducer(state, action);
-        callbacks.forEach((f) => f());
-      },
-      subscribe(f) {
-        callbacks.push(f);
-      },
-    };
-  }
 
   const store1 = createStore(amountReducer, 100);
 
