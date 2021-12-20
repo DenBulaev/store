@@ -1,9 +1,16 @@
 import { createStore } from './redux';
 
 // Action types
-export const ADD = 'add';
-export const TAKE = 'take';
-export const CLEAR = 'clear';
+const ADD = 'add';
+const TAKE = 'take';
+const CLEAR = 'clear';
+
+// action creater
+export const actions = {
+  add: (value) => ({ type: ADD, value }),
+  take: (value) => ({ type: TAKE, value }),
+  clear: () => ({ type: CLEAR }),
+};
 
 // reducer-function
 const amountReducer = (amount, action) => {

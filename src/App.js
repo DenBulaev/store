@@ -1,15 +1,15 @@
 import React from 'react';
-import store, { ADD, TAKE, CLEAR } from './store';
+import store, { actions } from './store';
 
 // eslint-disable-next-line func-names
 const App = function () {
   store.subscribe(() => console.log(store.getState()));
 
   // actions
-  store.dispatch({ type: ADD, value: 20 });
-  store.dispatch({ type: TAKE, value: 50 });
-  store.dispatch({ type: ADD, value: 40 });
-  store.dispatch({ type: CLEAR });
+  store.dispatch(actions.add(20));
+  store.dispatch(actions.take(50));
+  store.dispatch(actions.add(40));
+  store.dispatch(actions.clear());
   return (
     <h1>Hello</h1>
   );
