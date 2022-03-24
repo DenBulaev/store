@@ -3,6 +3,9 @@ export function createStore(reducer, initialState) {
   const callbacks = [];
 
   return {
+    getStateProperty(key) {
+      return state[key];
+    },
     getState() {
       return state;
     },
